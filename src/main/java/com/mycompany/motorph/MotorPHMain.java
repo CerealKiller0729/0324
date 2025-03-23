@@ -141,13 +141,15 @@ public class MotorPHMain {
             return;
         }
 
-        // Retrieve the employee's name
-        String firstName = employee.getFirstName();
-        String lastName = employee.getLastName();
-        String employeeName = lastName + ", " + firstName;
+        // Retrieve the employee's name and hourly rate
+    String firstName = employee.getFirstName();
+    String lastName = employee.getLastName();
+    double hourlyRate = employee.getHourlyRate(); // Get hourly rate once
 
-        // Display the employee's name
-        System.out.println("Employee Name: " + employeeName);
+    // Display the employee's name and hourly rate
+    System.out.println("Employee Name: " + lastName + ", " + firstName);
+    System.out.println("Hourly Rate: " + decimalFormat.format(hourlyRate)); // Print hourly rate once
+
 
         int year = getYear();
         int month = getMonth();
