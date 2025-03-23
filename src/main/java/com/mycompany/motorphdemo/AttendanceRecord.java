@@ -152,38 +152,31 @@ public class AttendanceRecord {
     public static double calculateTotalHoursAndPrint(int year, int month, String targetEmployeeId) {
         double totalHours = 0;
         boolean foundRecord = false;
-        //String employeeName = "";
+        
+    // Print only the header information
         System.out.println("Checking attendance for Employee ID: " + targetEmployeeId + " for Year: " + year + " Month: " + month);
 
         for (AttendanceRecord entry : attendanceRecords) {
-            System.out.printf("Entry ID: %s, Date: %s, Time In: %s, Time Out: %s%n", 
-        entry.getId(), 
-        entry.getDate(), 
-        entry.getTimeIn(), 
-        entry.getTimeOut());
-        
-       // Normalize entry ID for comparison
+        // Normalize entry ID for comparison
         if (entry.getId().equals(targetEmployeeId) || entry.getId().equals(targetEmployeeId + ".0")) {
             int entryYear = entry.getDate().getYear();
             int entryMonth = entry.getDate().getMonthValue();
 
-             System.out.printf("Checking Entry - ID: %s, Year: %d, Month: %d%n", entry.getId(), entryYear, entryMonth);
-             
+            // Check if the entry matches the specified year and month
             if (entryYear == year && entryMonth == month) {
                 foundRecord = true;
                 double hoursWorked = entry.calculateHoursWorked();
                 totalHours += hoursWorked; // Add to total hours
             }
-           }
-          } 
-
-        //if (totalHours > 0) {
-          if (foundRecord) {
-         System.out.printf("Total Hours for Employee ID: %s: %.2f%n", targetEmployeeId, totalHours);
-            //System.out.printf("Employee ID: %s, Name: %s, Total Hours: %d%n", targetEmployeeId, employeeName, totalHours);
-        } else {
-            System.out.println("No hours found for Employee ID: " + targetEmployeeId);
         }
+    }
+
+    // Print the total hours only if records were found
+    if (foundRecord) {
+        System.out.printf("Total Hours for Employee ID: %s: %.2f%n", targetEmployeeId, totalHours);
+    } else {
+        System.out.println("No hours found for Employee ID: " + targetEmployeeId);
+    }
 
         return totalHours;
     }
