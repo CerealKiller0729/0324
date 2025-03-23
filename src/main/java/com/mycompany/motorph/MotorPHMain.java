@@ -134,22 +134,41 @@ public class MotorPHMain {
         System.out.print("Enter Employee #: ");
         String empId = scanner.next();
 
+        // Find the employee by ID
+        Employee employee = findEmployeeById(empId);
+        if (employee == null) {
+            System.out.println("Employee not found.");
+            return;
+        }
+
+        // Retrieve the employee's name
+        String firstName = employee.getFirstName();
+        String lastName = employee.getLastName();
+        String employeeName = lastName + ", " + firstName;
+
+        // Display the employee's name
+        System.out.println("Employee Name: " + employeeName);
+
         int year = getYear();
         int month = getMonth();
 
-        // Calculate gross wage for the first half of the month
-        Grosswage grosswageFirstHalf = new Grosswage(empId, "", "", 0, year, month, true);
+        // Calculate gross wage and hours worked for the first half of the month
+        Grosswage grosswageFirstHalf = new Grosswage(empId, firstName, lastName, 0, year, month, true);
         double grossFirstHalf = grosswageFirstHalf.calculate();
+        double hoursFirstHalf = grosswageFirstHalf.getHoursWorked();
 
-        // Calculate gross wage for the second half of the month
-        Grosswage grosswageSecondHalf = new Grosswage(empId, "", "", 0, year, month, false);
+        // Calculate gross wage and hours worked for the second half of the month
+        Grosswage grosswageSecondHalf = new Grosswage(empId, firstName, lastName, 0, year, month, false);
         double grossSecondHalf = grosswageSecondHalf.calculate();
+        double hoursSecondHalf = grosswageSecondHalf.getHoursWorked();
 
         // Display results for both halves
-        System.out.println("First Half of the Month:");
+        System.out.println("\nFirst Half of the Month:");
+        System.out.println("Total Hours Worked: " + decimalFormat.format(hoursFirstHalf));
         System.out.println("Gross Wage: " + decimalFormat.format(grossFirstHalf));
 
         System.out.println("\nSecond Half of the Month:");
+        System.out.println("Total Hours Worked: " + decimalFormat.format(hoursSecondHalf));
         System.out.println("Gross Wage: " + decimalFormat.format(grossSecondHalf));
     }
 
@@ -160,31 +179,50 @@ public class MotorPHMain {
         System.out.print("Enter Employee #: ");
         String empId = scanner.next();
 
+        // Find the employee by ID
+        Employee employee = findEmployeeById(empId);
+        if (employee == null) {
+            System.out.println("Employee not found.");
+            return;
+        }
+
+        // Retrieve the employee's name
+        String firstName = employee.getFirstName();
+        String lastName = employee.getLastName();
+        String employeeName = lastName + ", " + firstName;
+
+        // Display the employee's name
+        System.out.println("Employee Name: " + employeeName);
+
         int year = getYear();
         int month = getMonth();
 
-        // Calculate gross wage for the first half of the month
-        Grosswage grosswageFirstHalf = new Grosswage(empId, "", "", 0, year, month, true);
+        // Calculate gross wage and hours worked for the first half of the month
+        Grosswage grosswageFirstHalf = new Grosswage(empId, firstName, lastName, 0, year, month, true);
         double grossFirstHalf = grosswageFirstHalf.calculate();
+        double hoursFirstHalf = grosswageFirstHalf.getHoursWorked();
 
         // Calculate net wage for the first half of the month
-        Netwage netwageFirstHalf = new Netwage(empId, "", grossFirstHalf, grosswageFirstHalf.getHoursWorked(), true);
+        Netwage netwageFirstHalf = new Netwage(empId, employeeName, grossFirstHalf, hoursFirstHalf, true);
         double netFirstHalf = netwageFirstHalf.calculate();
 
-        // Calculate gross wage for the second half of the month
-        Grosswage grosswageSecondHalf = new Grosswage(empId, "", "", 0, year, month, false);
+        // Calculate gross wage and hours worked for the second half of the month
+        Grosswage grosswageSecondHalf = new Grosswage(empId, firstName, lastName, 0, year, month, false);
         double grossSecondHalf = grosswageSecondHalf.calculate();
+        double hoursSecondHalf = grosswageSecondHalf.getHoursWorked();
 
         // Calculate net wage for the second half of the month
-        Netwage netwageSecondHalf = new Netwage(empId, "", grossSecondHalf, grosswageSecondHalf.getHoursWorked(), false);
+        Netwage netwageSecondHalf = new Netwage(empId, employeeName, grossSecondHalf, hoursSecondHalf, false);
         double netSecondHalf = netwageSecondHalf.calculate();
 
         // Display results for both halves
-        System.out.println("First Half of the Month:");
+        System.out.println("\nFirst Half of the Month:");
+        System.out.println("Total Hours Worked: " + decimalFormat.format(hoursFirstHalf));
         System.out.println("Gross Wage: " + decimalFormat.format(grossFirstHalf));
         System.out.println("Net Wage: " + decimalFormat.format(netFirstHalf));
 
         System.out.println("\nSecond Half of the Month:");
+        System.out.println("Total Hours Worked: " + decimalFormat.format(hoursSecondHalf));
         System.out.println("Gross Wage: " + decimalFormat.format(grossSecondHalf));
         System.out.println("Net Wage: " + decimalFormat.format(netSecondHalf));
     }
