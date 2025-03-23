@@ -47,7 +47,7 @@ public class Grosswage extends Calculation {
             return 0; // Exit if the hourly rate is invalid
         }
 
-        System.out.println("Hourly Rate: " + format(hourlyRate));
+        //System.out.println("Hourly Rate: " + format(hourlyRate));
 
         // Calculate total hours worked for the first or second half of the month
         hoursWorked = AttendanceRecord.calculateTotalHours(year, month, employeeID, isFirstHalf);
