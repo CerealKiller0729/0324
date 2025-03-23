@@ -93,10 +93,10 @@ public class MotorPHMain {
     private static void calculateGrossWage() {
         System.out.print("Enter Employee #: ");
         String empId = scanner.next();
-        System.out.print("Enter Year: ");
-        int year = scanner.nextInt();
-        System.out.print("Enter Month: ");
-        int month = scanner.nextInt();
+    
+       // Get year and month only once
+       int year = getYear();
+       int month = getMonth();
 
         double totalHours = AttendanceRecord.calculateTotalHoursAndPrint(year, month, empId);
         Employee employee = findEmployeeById(empId); // Method to find employee by ID
@@ -171,7 +171,7 @@ public class MotorPHMain {
     private static Employee findEmployeeById(String empId) {
         List<Employee> employees = EmployeeModelFromFile.getEmployeeModelList();
         for (Employee employee : employees) {
-            System.out.printf("Comparing Employee ID: %s with %s%n", empId, employee.getEmployeeNumber());
+            
             if (employee.getEmployeeNumber().equals(empId) || employee.getEmployeeNumber().equals(empId + ".0")) {
                 return employee;
             }
