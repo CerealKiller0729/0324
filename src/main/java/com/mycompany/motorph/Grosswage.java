@@ -2,12 +2,12 @@
  * Class for calculating the gross wage of an employee based on hours worked and hourly rate.
  */
 package com.mycompany.motorph;
+
+import java.util.List;
 /**
  *
  * @author angeliquerivera
  */
-
-import java.util.List;
 
 public class Grosswage extends Calculation {
     private final String employeeID; // Employee ID
@@ -55,8 +55,8 @@ public class Grosswage extends Calculation {
         // Calculate gross wage
         gross = calculateGrossWage(hoursWorked);
 
-        // Print the results
-        printGross();
+        // Removed the printGross() call to avoid redundant output
+        // printGross();
 
         return gross; // Return the gross wage
     }
@@ -72,24 +72,6 @@ public class Grosswage extends Calculation {
 
     private double calculateGrossWage(double totalHours) {
         return totalHours * hourlyRate; // Gross wage = hours worked * hourly rate
-    }
-
-    public void printGross() {
-        System.out.println("""
-                ------------------------------------------
-                Employee ID: %s
-                Name: %s
-                Hourly Rate: %s
-                Total Hours: %s
-                Gross Wage: %s
-                ------------------------------------------
-                """.formatted(
-                        employeeID,
-                        employeeName,
-                        format(hourlyRate),
-                        format(hoursWorked),
-                        format(gross)
-                ));
     }
 
     // Getters
