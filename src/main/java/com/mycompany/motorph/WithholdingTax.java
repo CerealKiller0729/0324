@@ -50,10 +50,8 @@ public class WithholdingTax extends Calculation {
             tax = 200833.33 + (taxableIncome - 666667) * 0.35;
         }
 
-        // Calculate net income after tax
-        afterTax = taxableIncome - tax;
-
-        return afterTax;
+        // Return the withholding tax amount
+        return tax; // Return the tax amount instead of afterTax
     }
 
     /**
