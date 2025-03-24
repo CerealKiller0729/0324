@@ -37,6 +37,8 @@ public class Netwage extends Calculation {
 
         // Calculate each deduction
         double sssDeduction = sss.calculate();
+        double displayedSSSDeduction = isFirstHalf ? sssDeduction / 2 : sssDeduction; // Halve the SSS deduction for display in the first half
+
         double philhealthDeduction = philhealth.calculate();
         double pagibigDeduction = pagibig.calculate();
         double lateDeduction = latePenalty.calculate();
@@ -46,12 +48,6 @@ public class Netwage extends Calculation {
 
         // Calculate net wage
         double net = gross - totalDeduction;
-
-        // Display results for the current half
-        System.out.println("\n" + (isFirstHalf ? "First" : "Second") + " Half of the Month:");
-        System.out.println("Total Hours Worked: " + decimalFormat.format(hours));
-        System.out.println("Gross Wage: " + decimalFormat.format(gross));
-        System.out.println("Net Wage: " + decimalFormat.format(net));
 
         return net; // Return the net wage
     }
