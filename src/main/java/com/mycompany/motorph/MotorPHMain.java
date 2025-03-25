@@ -207,7 +207,7 @@ public class MotorPHMain {
         double netFirstHalf = netwageFirstHalf.calculate();
 
         // Retrieve deductions and taxes (assuming these methods exist in Netwage)
-        double sssFirstHalf = netwageFirstHalf.getSSSDeduction();
+        double sssFirstHalf = netwageFirstHalf.getSSSDeduction() / 2;
         double philhealthFirstHalf = netwageFirstHalf.getPhilhealthDeduction();
         double pagibigFirstHalf = netwageFirstHalf.getPagIbigDeduction();
         double lateFirstHalf = netwageFirstHalf.getLateDeduction();
@@ -225,7 +225,7 @@ public class MotorPHMain {
         double netSecondHalf = netwageSecondHalf.calculate();
 
         // Retrieve deductions and taxes (assuming these methods exist in Netwage)
-        double sssSecondHalf = netwageSecondHalf.getSSSDeduction();
+        double sssSecondHalf = netwageSecondHalf.getSSSDeduction() / 2;
         double philhealthSecondHalf = netwageSecondHalf.getPhilhealthDeduction();
         double pagibigSecondHalf = netwageSecondHalf.getPagIbigDeduction();
         double lateSecondHalf = netwageSecondHalf.getLateDeduction();
